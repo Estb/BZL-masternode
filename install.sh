@@ -17,6 +17,9 @@ ufw allow 9999/tcp
 ufw logging on
 ufw --force enable
 
+echo "Installing PWGEN"
+apt-get install -y pwgen
+
 echo "Installing 2G Swapfile"
 sudo fallocate -l 2G /swapfile
 sudo chmod 600 /swapfile
@@ -44,3 +47,21 @@ cd ~/.denarius
 rm -rf database txleveldb smsgDB
 wget https://gitlab.com/denarius/chaindata/raw/master/chaindata.zip
 unzip chaindata.zip
+
+echo "Populate denarius.conf"
+IP=$(curl ipinfo.io/ip)
+USERNAME=$(pwgen -s 16 1)
+PASSWORD=$(pwgen -s 64 1)
+echo -n "What is your masternodeprivkey? (Hint:genkey output)"
+read MASTERNODEPRIVKEY
+echo "rpcuser=$USERNAME" > ~/.denarius/denarius.conf
+echo "rpcpassword=$PASSWORD" ~/.denarius/denarius.conf
+echo "server=1" >> ~/.denarius/denarius.conf
+echo "listen=1" >> ~/.denarius/denarius.conf
+echo "port=9999" >> ~/.denarius/denarius.conf
+echo "rpcport=33339" >> ~/.denarius/denarius.conf
+echo "addnode=denarius.host" >> ~/.denarius/denarius.conf
+echo "maxconnections=16" >> ~/.denarius/denarius.conf
+echo "masternodeprivkey=$MASTERNODEPRIVKEY" >> ~/.denarius/denarius.conf
+echo "masternode=1" >> ~/.denarius/denarius.conf
+echo "masternodeaddr=$IP:9999" >> ~/.denarius/denarius.conf
