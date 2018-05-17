@@ -71,3 +71,6 @@ echo "maxconnections=16" >> ~/.denarius/denarius.conf
 echo "masternodeprivkey=$MASTERNODEPRIVKEY" >> ~/.denarius/denarius.conf
 echo "masternode=1" >> ~/.denarius/denarius.conf
 echo "masternodeaddr=$IP:9999" >> ~/.denarius/denarius.conf
+
+echo "Run ./denariusd"
+screen -dmS denariusd /denarius/src/./denariusd
