@@ -59,7 +59,7 @@ sudo mkdir  /root/.denarius
     rpcpassword=$(openssl rand -base64 48)
     echo -n "What is your masternodeprivkey? (Hint:genkey output)"
     read MASTERNODEPRIVKEY
-    echo -e "rpcuser=$rpcuser\nrpcpassword=$rpcpassword\nserver=1\nlisten=1\nmaxconnections=100\ndaemon=1\nrpcallowip=127.0.0.1\nexternalip=$VPSIP:9999\nmasternodeprivkey=$MASTERNODEPRIVKEY" > /root/.denarius/denarius.conf
+    echo -e "rpcuser=$rpcuser\nrpcpassword=$rpcpassword\nserver=1\nlisten=1\nmaxconnections=100\ndaemon=1\nport=9999\nstaking=0\nrpcallowip=127.0.0.1\nexternalip=$VPSIP:9999\nmasternode=1\nmasternodeprivkey=$MASTERNODEPRIVKEY" > /root/.denarius/denarius.conf
 
 
 echo "Get Chaindata"
