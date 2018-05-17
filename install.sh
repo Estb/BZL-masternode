@@ -3,6 +3,12 @@
 echo "Updating linux packages"
 sudo apt-get update && apt-get upgrade -y
 
+echo "Intalling screen"
+apt install screen
+
+echo "Installing git"
+apt install git -y
+
 echo "Intalling fail2ban"
 sudo apt install fail2ban
 
