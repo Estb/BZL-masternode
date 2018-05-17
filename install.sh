@@ -54,8 +54,6 @@ sudo mkdir  /root/.denarius
 IP=$(curl ipinfo.io/ip)
 USERNAME=$(pwgen -s 16 1)
 PASSWORD=$(pwgen -s 64 1)
-echo -n "What is your masternodeprivkey? (Hint:genkey output)"
-read MASTERNODEPRIVKEY
 echo "rpcuser=$USERNAME" > /root/.denarius/denarius.conf
 echo "rpcpassword=$PASSWORD" /root/.denarius/denarius.conf
 echo "server=1" >> /root/.denarius/denarius.conf
@@ -64,9 +62,11 @@ echo "port=9999" >> /root/.denarius/denarius.conf
 echo "rpcport=33339" >> /root/.denarius/denarius.conf
 echo "addnode=denarius.host" >> /root/.denarius/denarius.conf
 echo "maxconnections=16" >> /root/.denarius/denarius.conf
-echo "masternodeprivkey=$MASTERNODEPRIVKEY" >> /root/.denarius/denarius.conf
 echo "masternode=1" >> /root/.denarius/denarius.conf
 echo "masternodeaddr=$IP:9999" >> /root/.denarius/denarius.conf
+echo -n "What is your masternodeprivkey? (Hint:genkey output)"
+read MASTERNODEPRIVKEY
+echo "masternodeprivkey=$MASTERNODEPRIVKEY" >> /root/.denarius/denarius.conf
 
 echo "Get Chaindata"
 apt-get -y install unzip
