@@ -36,18 +36,16 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 echo "Installing Dependencies"
 apt-get --assume-yes install git unzip build-essential libssl-dev libdb++-dev libboost-all-dev libcrypto++-dev libqrencode-dev libminiupnpc-dev libgmp-dev libgmp3-dev autoconf autogen automake  libtool
 
-echo "Downloading Denarius Wallet"
-wget https://github.com/carsenk/denarius/releases/download/v2.5/denariusd-2.5.0.0_ubuntu16.tar.gz
-tar -xvf denariusd-2.5.0.0_ubuntu16.tar.gz -C /usr/local/bin
-mv /usr/local/bin/denariusd-2.5.0.0_ubuntu16 /usr/local/bin/denariusd
-rm denariusd-2.5.0.0_ubuntu16.tar.gz
+#echo "Downloading Denarius Wallet"
+#wget https://github.com/carsenk/denarius/releases/download/v2.5/denariusd-2.5.0.0_ubuntu16.tar.gz
+#tar -xvf denariusd-2.5.0.0_ubuntu16.tar.gz -C /usr/local/bin
+#mv /usr/local/bin/denariusd-2.5.0.0_ubuntu16 /usr/local/bin/denariusd
+#rm denariusd-2.5.0.0_ubuntu16.tar.gz
 
-echo "Installing Denarius Wallet"
-denariusd stop
+echo "Download and Compile Denarius Wallet"
 git clone https://github.com/carsenk/denarius
 cd denarius
 git checkout master
-git pull
 cd src
 make -f makefile.unix
 mv /root/denarius/src/denariusd /usr/local/bin/denariusd
