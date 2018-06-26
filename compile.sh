@@ -72,6 +72,6 @@ wget https://bzlcoin.org/chaindata/chaindata.zip
 unzip chaindata.zip
 
 echo "Starting Bzlcoin Daemon"
-sudo bzlcoind --daemon
+sudo bzlcoin/src/bzlcoind --daemon
 #echo "Run ./bzlcoind"
 #screen -dmS bzlcoind /bzlcoin/src/./bzlcoind
